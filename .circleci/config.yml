@@ -1,11 +1,11 @@
 version: 2.1
 orbs:
-  aws-ecr: circleci/aws-ecr@4.0.1
+  aws-ecr: circleci/aws-ecr@6.1.0
 workflows:
   build-and-deploy:
     jobs:
-      - aws-ecr/build_and_push_image:
+      - aws-ecr/build-and-push-image:
           account-url: AWS_ECR_ACCOUNT_URL_ENV_VAR_NAME
-          repo: AWS_RESOURCE_NAME_PREFIX
+          repo: "${AWS_RESOURCE_NAME_PREFIX_ENV_VAR_NAME}"
           region: AWS_DEFAULT_REGION
-          tag: CIRCLE_SHA1
+          tag: "${CIRCLE_SHA1}"
